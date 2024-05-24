@@ -61,12 +61,10 @@ function handleSubmit(event){
 }
 
 function showLoader() {
-    refs.loader.style.display = "block"
-    refs.loaderWrapper.style.display = 'flex'; 
+    refs.loader.style.display = "inline-block"
 }
   
 function hideLoader() {
     refs.loader.style.display = "none"
-    refs.loaderWrapper.style.display = 'none'; 
 }
 
