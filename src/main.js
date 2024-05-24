@@ -11,15 +11,14 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import "izitoast/dist/css/iziToast.min.css";
 
 
-
 const refs = {
     formEl: document.querySelector(".form"),
     inputFormEl: document.querySelector(".form-input"),
     buttonFormEl: document.querySelector(".form-button"),
     gallery: document.querySelector(".gallery"),
-    loader: document.querySelector("#preloader")
+    loader: document.querySelector(".loader"),
+    loaderWrapper: document.querySelector(".loader-wrapper")
 };
-
 
 refs.formEl.addEventListener("submit", handleSubmit)
 
@@ -27,20 +26,22 @@ function handleSubmit(event){
     event.preventDefault()
     refs.gallery.innerHTML = ""
     const inputValue = refs.inputFormEl.value.trim();
-   
+    
+    showLoader()
 
     getImages(inputValue)
                     .then(data => {
                         if(data.hits.length > 0){
                             const markup = createMarkup(data.hits);
-                
+                            
                             refs.gallery.insertAdjacentHTML("beforeend", markup);
-
+                            
                             let galleryImages = new SimpleLightbox('.gallery a', {
                                 showCounter: false,
                                 captionsData: "alt",
                                 captionDelay:250
                             });
+                            
                             refs.gallery.refresh()
                         }else{
                             iziToast.show({
@@ -54,7 +55,18 @@ function handleSubmit(event){
                     })
 
                     .catch(error => console.log(error))
+                    .finally(() => {
+                        hideLoader();
+                    });
 }
 
-
+function showLoader() {
+    refs.loader.style.display = "block"
+    refs.loaderWrapper.style.display = 'flex'; 
+}
+  
+function hideLoader() {
+    refs.loader.style.display = "none"
+    refs.loaderWrapper.style.display = 'none'; 
+}
 
