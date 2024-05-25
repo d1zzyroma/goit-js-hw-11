@@ -48,7 +48,7 @@
   letter-spacing: 0.04em;
   color: white;
   background-color: rgba(78, 117, 255, 1);
-  border:none;
+  border: none;
 
 }
 .form-button:hover{
@@ -129,16 +129,22 @@
 
 
 
+.parent {
+  display: none;
+  place-items: center;
+  height: 100vh; /* або інша висота, якщо потрібно */
+}
+
 .loader {
   width: 48px;
   height: 48px;
   border: 2px solid #FFF;
   border-radius: 50%;
   display: none;
-  position: relative;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
+
 .loader::after,
 .loader::before {
   content: '';  

@@ -17,17 +17,17 @@ const refs = {
     buttonFormEl: document.querySelector(".form-button"),
     gallery: document.querySelector(".gallery"),
     loader: document.querySelector(".loader"),
-    loaderWrapper: document.querySelector(".loader-wrapper")
+    parent: document.querySelector(".parent")
 };
 
-refs.formEl.addEventListener("submit", handleSubmit)
+refs.formEl.addEventListener("submit", handleSubmit);
 
 function handleSubmit(event){
     event.preventDefault()
-    refs.gallery.innerHTML = ""
+    refs.gallery.innerHTML = "";
     const inputValue = refs.inputFormEl.value.trim();
     
-    showLoader()
+    showLoader();
 
     getImages(inputValue)
                     .then(data => {
@@ -42,7 +42,7 @@ function handleSubmit(event){
                                 captionDelay:250
                             });
                             
-                            refs.gallery.refresh()
+                            galleryImages.refresh();
                         }else{
                             iziToast.show({
                                 title: 'Error',
@@ -61,10 +61,12 @@ function handleSubmit(event){
 }
 
 function showLoader() {
-    refs.loader.style.display = "inline-block"
+    refs.loader.style.display = "inline-block";
+    refs.parent.style.display = "grid";
 }
   
 function hideLoader() {
-    refs.loader.style.display = "none"
+    refs.loader.style.display = "none";
+    refs.parent.style.display = "none";
 }
 
