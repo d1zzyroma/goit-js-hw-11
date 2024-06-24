@@ -1,20 +1,24 @@
-import Swiper from 'swiper/bundle';
-import 'swiper/css/bundle';
+import '@splidejs/splide/css/sea-green';
+import '@splidejs/splide/css/core';
 
-const swiper = new Swiper('.swiper', {
-    direction: 'horizontal',
-    loop: true,
-  
-    pagination: {
-      el: '.swiper-pagination',
-    },
-  
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+import Splide from '@splidejs/splide';
 
-  });
+new Splide( '.splide' ).mount();
+
+// const swiper = new Swiper('.swiper', {
+//     direction: 'horizontal',
+//     loop: true,
+  
+//     pagination: {
+//       el: '.swiper-pagination',
+//     },
+  
+//     navigation: {
+//       nextEl: '.swiper-button-next',
+//       prevEl: '.swiper-button-prev',
+//     },
+
+//   });
 
 
 const currentDate = new Date();
