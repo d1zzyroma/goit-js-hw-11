@@ -1,26 +1,36 @@
-import{S as i,i as c}from"./assets/vendor-3fe00192.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))n(e);new MutationObserver(e=>{for(const o of e)if(o.type==="childList")for(const a of o.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&n(a)}).observe(document,{childList:!0,subtree:!0});function r(e){const o={};return e.integrity&&(o.integrity=e.integrity),e.referrerPolicy&&(o.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?o.credentials="include":e.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function n(e){if(e.ep)return;e.ep=!0;const o=r(e);fetch(e.href,o)}})();function d(l){const t="https://pixabay.com/api/",r=new URLSearchParams({key:"44030880-e45e37f6dd8504bc3a71fd6c0",q:l,image_type:"photo",orientation:"horizontal",safesearch:"true"}),n=`${t}?${r}`;return fetch(n).then(e=>e.json())}function u(l){return l.map(t=>`
-         <li class="gallery-item">
-         <a href="${t.largeImageURL}" class="gallery-link">
-           <img src="${t.webformatURL}" alt="${t.tags}" width="358px" height="150">
-         </a>
-         <div class="inf-wrapper">
-           <div class="likes item">
-             <p class="text-one">Likes</p>
-             <p class="likes-count text-two">${t.likes}</p>
-           </div>
-           <div class="views item">
-             <p class="text-one">Views</p>
-             <p class="views-count text-two">${t.views}</p>
-           </div>
-           <div class="comments item">
-             <p class="text-one">Comments</p>
-             <p class="comments-count text-two">${t.comments}</p>
-           </div>
-           <div class="downloads item">
-             <p class="text-one">Downloads</p>
-             <p class="downloads-count text-two">${t.downloads}</p>
-           </div>
-         </div>
-       </li>
-        `).join("")}const s={formEl:document.querySelector(".form"),inputFormEl:document.querySelector(".form-input"),buttonFormEl:document.querySelector(".form-button"),gallery:document.querySelector(".gallery"),loader:document.querySelector(".loader"),parent:document.querySelector(".parent")};s.formEl.addEventListener("submit",p);function p(l){l.preventDefault(),s.gallery.innerHTML="";const t=s.inputFormEl.value.trim();m(),d(t).then(r=>{if(r.hits.length>0){const n=u(r.hits);s.gallery.insertAdjacentHTML("beforeend",n),new i(".gallery a",{showCounter:!1,captionsData:"alt",captionDelay:250}).refresh()}else c.show({title:"Error",message:"What would you like to add?",position:"topRight",color:"rgba(239, 64, 64, 1)",icon:"fas fa-exclamation-circle"})}).catch(r=>console.log(r)).finally(()=>{f()})}function m(){s.loader.style.display="inline-block",s.parent.style.display="grid"}function f(){s.loader.style.display="none",s.parent.style.display="none"}
+import{S as c}from"./assets/vendor-f4e7ce0d.js";(function(){const i=document.createElement("link").relList;if(i&&i.supports&&i.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))s(t);new MutationObserver(t=>{for(const n of t)if(n.type==="childList")for(const l of n.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&s(l)}).observe(document,{childList:!0,subtree:!0});function e(t){const n={};return t.integrity&&(n.integrity=t.integrity),t.referrerPolicy&&(n.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?n.credentials="include":t.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function s(t){if(t.ep)return;t.ep=!0;const n=e(t);fetch(t.href,n)}})();new c(".swiper",{direction:"horizontal",loop:!0,pagination:{el:".swiper-pagination"},navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"}});const a=new Date,d=a.getDate(),m=a.getMonth()+1,u=a.getFullYear(),p=`${d}-${m}-${u}`,k=document.getElementById("publication_date");k.textContent=p;document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll(".commentList-item").forEach(i=>{const e=new Date;e.setDate(e.getDate()-5);const s=e.toISOString().split("T")[0],t=i.querySelector(".publication-date");t?t.textContent=""+s:console.error('Element with class "publication-date" not found')}),document.addEventListener("click",function(i){const e=i.target;if(e.classList.contains("like-btn")){const s=e.classList.contains("liked"),t=e.parentElement.nextElementSibling.querySelector(".dislike-btn").classList.contains("disliked");if(s){e.classList.remove("liked");const n=parseInt(e.dataset.likes);e.dataset.likes=n-1,e.querySelector(".like-count").textContent=e.dataset.likes}else{e.classList.add("liked");const n=parseInt(e.dataset.likes);if(e.dataset.likes=n+1,e.querySelector(".like-count").textContent=e.dataset.likes,t){e.parentElement.nextElementSibling.querySelector(".dislike-btn").classList.remove("disliked");const l=parseInt(e.parentElement.nextElementSibling.querySelector(".dislike-btn").dataset.dislikes);e.parentElement.nextElementSibling.querySelector(".dislike-btn").dataset.dislikes=l-1,e.parentElement.nextElementSibling.querySelector(".dislike-btn .dislike-count").textContent=e.parentElement.nextElementSibling.querySelector(".dislike-btn").dataset.dislikes}}}if(e.classList.contains("dislike-btn")){const s=e.classList.contains("disliked"),t=e.parentElement.previousElementSibling.querySelector(".like-btn").classList.contains("liked");if(s){e.classList.remove("disliked");const n=parseInt(e.dataset.dislikes);e.dataset.dislikes=n-1,e.querySelector(".dislike-count").textContent=e.dataset.dislikes}else{e.classList.add("disliked");const n=parseInt(e.dataset.dislikes);if(e.dataset.dislikes=n+1,e.querySelector(".dislike-count").textContent=e.dataset.dislikes,t){e.parentElement.previousElementSibling.querySelector(".like-btn").classList.remove("liked");const l=parseInt(e.parentElement.previousElementSibling.querySelector(".like-btn").dataset.likes);e.parentElement.previousElementSibling.querySelector(".like-btn").dataset.likes=l-1,e.parentElement.previousElementSibling.querySelector(".like-btn .like-count").textContent=e.parentElement.previousElementSibling.querySelector(".like-btn").dataset.likes}}}})});document.addEventListener("DOMContentLoaded",function(){var o=document.getElementById("commentForm"),i=document.getElementById("commentAuthor"),e=document.getElementById("commentText"),s=document.getElementById("commentList");o.addEventListener("submit",function(t){t.preventDefault();var n=i.value.trim(),l=e.value.trim();if(l!==""){var r=document.createElement("li");r.className="commentList-item",r.innerHTML=`
+                <img src="./img/default-avatar.jpg" alt="" class="commentList-item-img">
+                <div class="comment-text-content">
+                    <p class="comment-text"><b style="font-size: 18px; color: dodgerblue;">${n}</b></p>
+                    <p class="comment-text">${l}</p>
+                    <div class="icons">
+                        <ul class="icons-list">
+                            <li class="icons-list-item">
+                                <button class="icons-btn like-btn" data-likes="0">
+                                    <svg width="16" height="16">
+                                        <use xlink:href="./img/symbol-defs.svg#icon-like"></use>
+                                    </svg>
+                                    <span class="like-count">0</span> ชอบ 
+                                </button>
+                            </li>
+                            <li class="icons-list-item">
+                                <button class="icons-btn dislike-btn" data-dislikes="0">
+                                    <svg width="16" height="16">
+                                        <use xlink:href="./img/symbol-defs.svg#icon-dislike"></use>
+                                    </svg>
+                                    <span class="dislike-count">0</span> ไม่ชอบ 
+                                </button>
+                            </li>
+                            <li class="icons-list-item">
+                                <a href="#commentForm" class="icons-btn">
+                                    <svg width="16" height="16">
+                                        <use xlink:href="./img/symbol-defs.svg#icon-comment"></use>
+                                    </svg>
+                                    ฟอร์ม
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            `,s.insertAdjacentElement("afterbegin",r),i.value="",e.value=""}})});
 //# sourceMappingURL=commonHelpers.js.map
