@@ -287,7 +287,7 @@
   font-weight: bold;
   text-decoration: none;
   color: white;
-  background-color: #ff0000; /* червоний фон */
+  background-color: #ff0000; 
   border: none;
   border-radius: 8px;
   text-align: center;
@@ -303,7 +303,7 @@
 }
 
 .buy-btn:hover {
-  transform: scale(1.1); /* збільшення розміру при наведенні */
+  transform: scale(1.1); 
 }
 
 .buy-btn::before {
@@ -317,11 +317,11 @@
   border-radius: 50%;
   transform: scale(0);
   transition: transform 0.5s ease-out;
-  pointer-events: none; /* щоб не перехоплювати події кліків */
+  pointer-events: none; 
 }
 
 .buy-btn:hover::before {
-  transform: scale(2); /* збільшення анімації при наведенні */
+  transform: scale(2); 
 }
 
 .buy-btn span {
